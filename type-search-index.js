@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.walletservice.model","l":"Player"},{"p":"com.walletservice.service","l":"PlayerService"},{"p":"com.walletservice.model","l":"Transaction"},{"p":"com.walletservice.model","l":"TransactionType"},{"p":"com.walletservice.app","l":"WalletServiceApplication"}];updateSearchResults();
