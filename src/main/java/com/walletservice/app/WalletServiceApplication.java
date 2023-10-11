@@ -7,100 +7,100 @@ import com.walletservice.service.PlayerService;
 import java.util.Scanner;
 
 /**
- * Основной класс приложения, предоставляющий пользовательский интерфейс для работы с кошельком.
+ * РћСЃРЅРѕРІРЅРѕР№ РєР»Р°СЃСЃ РїСЂРёР»РѕР¶РµРЅРёСЏ, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РёРЅС‚РµСЂС„РµР№СЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРѕС€РµР»СЊРєРѕРј.
  */
 public class WalletServiceApplication {
 
     /**
-     * Точка входа в приложение.
-     * @param args аргументы командной строки (в данном случае не используются).
+     * РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРёР»РѕР¶РµРЅРёРµ.
+     * @param args Р°СЂРіСѓРјРµРЅС‚С‹ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё (РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ РЅРµ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ).
      */
     public static void main(String[] args) {
         PlayerService playerService = new PlayerService();
         Scanner scanner = new Scanner(System.in);
         Player loggedInPlayer = null;
 
-        // Основной цикл интерфейса пользователя.
+        // РћСЃРЅРѕРІРЅРѕР№ С†РёРєР» РёРЅС‚РµСЂС„РµР№СЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
         while (true) {
-            System.out.println("1. Регистрация\n2. Вход\n3. Показать баланс\n4. Дебет\n5. Кредит\n6. История транзакций\n7. Выход");
+            System.out.println("1. Р РµРіРёСЃС‚СЂР°С†РёСЏ\n2. Р’С…РѕРґ\n3. РџРѕРєР°Р·Р°С‚СЊ Р±Р°Р»Р°РЅСЃ\n4. Р”РµР±РµС‚\n5. РљСЂРµРґРёС‚\n6. РСЃС‚РѕСЂРёСЏ С‚СЂР°РЅР·Р°РєС†РёР№\n7. Р’С‹С…РѕРґ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
-                // Регистрация нового пользователя.
+                // Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
                 case 1:
-                    System.out.println("Регистрация нового пользователя:");
-                    System.out.print("Введите имя пользователя: ");
+                    System.out.println("Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:");
+                    System.out.print("Р’РІРµРґРёС‚Рµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ: ");
                     String regUsername = scanner.nextLine();
-                    System.out.print("Введите пароль: ");
+                    System.out.print("Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: ");
                     String regPassword = scanner.nextLine();
                     if(playerService.register(regUsername, regPassword)) {
-                        System.out.println("Регистрация выполнена успешно!");
+                        System.out.println("Р РµРіРёСЃС‚СЂР°С†РёСЏ РІС‹РїРѕР»РЅРµРЅР° СѓСЃРїРµС€РЅРѕ!");
                     } else {
-                        System.out.println("Пользователь с таким именем уже существует.");
+                        System.out.println("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.");
                     }
                     break;
-                // Вход в систему.
+                // Р’С…РѕРґ РІ СЃРёСЃС‚РµРјСѓ.
                 case 2:
-                    System.out.println("Вход в систему:");
-                    System.out.print("Введите имя пользователя: ");
+                    System.out.println("Р’С…РѕРґ РІ СЃРёСЃС‚РµРјСѓ:");
+                    System.out.print("Р’РІРµРґРёС‚Рµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ: ");
                     String loginUsername = scanner.nextLine();
-                    System.out.print("Введите пароль: ");
+                    System.out.print("Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: ");
                     String loginPassword = scanner.nextLine();
                     loggedInPlayer = playerService.login(loginUsername, loginPassword);
                     if (loggedInPlayer != null) {
-                        System.out.println("Вход выполнен успешно!");
+                        System.out.println("Р’С…РѕРґ РІС‹РїРѕР»РЅРµРЅ СѓСЃРїРµС€РЅРѕ!");
                     } else {
-                        System.out.println("Неверные имя пользователя или пароль.");
+                        System.out.println("РќРµРІРµСЂРЅС‹Рµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё РїР°СЂРѕР»СЊ.");
                     }
                     break;
-                // Показать баланс.
+                // РџРѕРєР°Р·Р°С‚СЊ Р±Р°Р»Р°РЅСЃ.
                 case 3:
                     if (loggedInPlayer == null) {
-                        System.out.println("Сначала выполните вход.");
+                        System.out.println("РЎРЅР°С‡Р°Р»Р° РІС‹РїРѕР»РЅРёС‚Рµ РІС…РѕРґ.");
                         break;
                     }
-                    System.out.println("Баланс: " + playerService.getBalance(loggedInPlayer.getUsername()));
+                    System.out.println("Р‘Р°Р»Р°РЅСЃ: " + playerService.getBalance(loggedInPlayer.getUsername()));
                     break;
-                // Дебет.
+                // Р”РµР±РµС‚.
                 case 4:
                     if (loggedInPlayer == null) {
-                        System.out.println("Сначала выполните вход.");
+                        System.out.println("РЎРЅР°С‡Р°Р»Р° РІС‹РїРѕР»РЅРёС‚Рµ РІС…РѕРґ.");
                         break;
                     }
-                    System.out.println("Введите сумму для дебета:");
+                    System.out.println("Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РґР»СЏ РґРµР±РµС‚Р°:");
                     double debitAmount = scanner.nextDouble();
                     if (playerService.debit(loggedInPlayer, debitAmount)) {
-                        System.out.println("Дебет успешно выполнен.");
+                        System.out.println("Р”РµР±РµС‚ СѓСЃРїРµС€РЅРѕ РІС‹РїРѕР»РЅРµРЅ.");
                     } else {
-                        System.out.println("Недостаточно средств.");
+                        System.out.println("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ.");
                     }
                     break;
-                // Кредит.
+                // РљСЂРµРґРёС‚.
                 case 5:
                     if (loggedInPlayer == null) {
-                        System.out.println("Сначала выполните вход.");
+                        System.out.println("РЎРЅР°С‡Р°Р»Р° РІС‹РїРѕР»РЅРёС‚Рµ РІС…РѕРґ.");
                         break;
                     }
-                    System.out.println("Введите сумму для кредита:");
+                    System.out.println("Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РґР»СЏ РєСЂРµРґРёС‚Р°:");
                     double creditAmount = scanner.nextDouble();
                     playerService.credit(loggedInPlayer, creditAmount);
-                    System.out.println("Кредит успешно выполнен.");
+                    System.out.println("РљСЂРµРґРёС‚ СѓСЃРїРµС€РЅРѕ РІС‹РїРѕР»РЅРµРЅ.");
                     break;
-                // История транзакций.
+                // РСЃС‚РѕСЂРёСЏ С‚СЂР°РЅР·Р°РєС†РёР№.
                 case 6:
                     if (loggedInPlayer == null) {
-                        System.out.println("Сначала выполните вход.");
+                        System.out.println("РЎРЅР°С‡Р°Р»Р° РІС‹РїРѕР»РЅРёС‚Рµ РІС…РѕРґ.");
                         break;
                     }
-                    System.out.println("История транзакций:");
+                    System.out.println("РСЃС‚РѕСЂРёСЏ С‚СЂР°РЅР·Р°РєС†РёР№:");
                     for (Transaction transaction : playerService.getTransactionHistory(loggedInPlayer.getUsername())) {
                         System.out.println(transaction.getType() + ": " + transaction.getAmount() + ", ID: " + transaction.getTransactionId());
                     }
                     break;
-                // Выход из программы.
+                // Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.
                 case 7:
-                    System.out.println("Выход из программы.");
+                    System.out.println("Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.");
                     return;
             }
         }
