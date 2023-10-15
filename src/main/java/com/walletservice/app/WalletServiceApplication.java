@@ -3,6 +3,8 @@ package com.walletservice.app;
 import com.walletservice.model.Player;
 import com.walletservice.model.Transaction;
 import com.walletservice.service.PlayerService;
+import com.walletservice.service.TransactionService;
+import com.walletservice.service.TransactionServiceImpl;
 
 import java.util.Scanner;
 
@@ -11,12 +13,10 @@ import java.util.Scanner;
  */
 public class WalletServiceApplication {
 
-    /**
-     * Точка входа в приложение.
-     * @param args аргументы командной строки (в данном случае не используются).
-     */
     public static void main(String[] args) {
         PlayerService playerService = new PlayerService();
+        TransactionService transactionService = new TransactionServiceImpl();
+
         try (Scanner scanner = new Scanner(System.in)) {
             Player loggedInPlayer = null;
 
@@ -60,9 +60,10 @@ public class WalletServiceApplication {
                             System.out.println("Сначала выполните вход.");
                             break;
                         }
-                        System.out.println("Баланс: " + playerService.getBalance(loggedInPlayer.getUsername()));
+                        System.out.println("Баланс: " + loggedInPlayer.getBalance());
                         break;
-                    // Дебет.
+                    // Кредит.
+
                     case 4:
                         if (loggedInPlayer == null) {
                             System.out.println("Сначала выполните вход.");
@@ -70,13 +71,13 @@ public class WalletServiceApplication {
                         }
                         System.out.println("Введите сумму для дебета:");
                         double debitAmount = scanner.nextDouble();
-                        if (playerService.debit(loggedInPlayer, debitAmount)) {
+                        if (transactionService.debit(loggedInPlayer, debitAmount)) {
                             System.out.println("Дебет успешно выполнен.");
                         } else {
                             System.out.println("Недостаточно средств.");
                         }
                         break;
-                    // Кредит.
+
                     case 5:
                         if (loggedInPlayer == null) {
                             System.out.println("Сначала выполните вход.");
@@ -84,7 +85,7 @@ public class WalletServiceApplication {
                         }
                         System.out.println("Введите сумму для кредита:");
                         double creditAmount = scanner.nextDouble();
-                        playerService.credit(loggedInPlayer, creditAmount);
+                        transactionService.credit(loggedInPlayer, creditAmount);
                         System.out.println("Кредит успешно выполнен.");
                         break;
                     // История транзакций.
@@ -94,7 +95,7 @@ public class WalletServiceApplication {
                             break;
                         }
                         System.out.println("История транзакций:");
-                        for (Transaction transaction : playerService.getTransactionHistory(loggedInPlayer.getUsername())) {
+                        for (Transaction transaction : transactionService.getTransactionHistory(loggedInPlayer.getUsername())) {
                             System.out.println(transaction.getType() + ": " + transaction.getAmount() + ", ID: " + transaction.getTransactionId());
                         }
                         break;
@@ -102,6 +103,11 @@ public class WalletServiceApplication {
                     case 7:
                         System.out.println("Выход из программы.");
                         return;
+
+                    // Неправильный выбор.
+                    default:
+                        System.out.println("Неверный выбор. Пожалуйста, попробуйте снова.");
+                        break;
                 }
             }
         }
