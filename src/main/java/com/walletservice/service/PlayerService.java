@@ -44,15 +44,4 @@ public class PlayerService {
         }
         return null;
     }
-
-    /**
-     * Возвращает баланс игрока по его имени пользователя.
-     *
-     * @param username имя пользователя.
-     * @return текущий баланс игрока или -1, если игрок не найден.
-     */
-    public double getBalance(String username) {
-        Player player = players.get(username);
-        return (player != null) ? player.getBalance() : -1;
-    }
 }
