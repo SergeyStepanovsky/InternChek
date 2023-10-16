@@ -1,3 +1,3 @@
-com.walletservice.app
 com.walletservice.model
+com.walletservice.repository
 com.walletservice.service

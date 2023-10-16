@@ -39,5 +39,4 @@ public class TransactionServiceImplTest {
         assertEquals(150.0, testPlayer.getBalance());
     }
 
-    // ƒополнительные тесты дл€ других методов ...
 }
