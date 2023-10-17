@@ -39,7 +39,6 @@ public class TransactionRepositoryImpl implements TransactionRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return transactions;
     }
 
@@ -47,12 +46,9 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     public void save(Transaction transaction) {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
-
             preparedStatement.setString(1, transaction.getTransactionId().toString());
-            
             preparedStatement.setDouble(3, transaction.getAmount());
             preparedStatement.setString(4, transaction.getType().toString());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

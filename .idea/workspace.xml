@@ -8,7 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cd5c47a-67bf-4a6a-883a-92753ca5415e" name="Changes" comment="" />
+    <list default="true" id="3cd5c47a-67bf-4a6a-883a-92753ca5415e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/walletservice/repository/TransactionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/walletservice/repository/TransactionRepositoryImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
