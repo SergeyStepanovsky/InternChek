@@ -49,7 +49,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUERY)) {
 
             preparedStatement.setString(1, transaction.getTransactionId().toString());
-            // Ошибка в следующих двух строках. Используйте setDouble для amount и setString для username и type.
+            
             preparedStatement.setDouble(3, transaction.getAmount());
             preparedStatement.setString(4, transaction.getType().toString());
 
