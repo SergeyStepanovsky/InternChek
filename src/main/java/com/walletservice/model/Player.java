@@ -1,19 +1,21 @@
 package com.walletservice.model;
 
-/**
- * Класс Player представляет собой пользователя в системе кошелька.
- */
 public class Player {
+
+    /**
+     * Идентификатор игрока.
+     */
+    private int id;
 
     /**
      * Имя пользователя.
      */
-    private final String username;
+    private String username;
 
     /**
      * Пароль пользователя.
      */
-    private final String password;
+    private String password;
 
     /**
      * Текущий баланс пользователя.
@@ -31,38 +33,41 @@ public class Player {
         this.password = password;
     }
 
-    /**
-     * Получить имя пользователя.
-     *
-     * @return Имя пользователя.
-     */
+    public Player(int id, String username, double balance) {
+        this.id = id;
+        this.username = username;
+        this.balance = balance;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
 
-    /**
-     * Получить пароль пользователя.
-     *
-     * @return Пароль пользователя.
-     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    /**
-     * Получить текущий баланс пользователя.
-     *
-     * @return Текущий баланс.
-     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public double getBalance() {
         return balance;
     }
 
-    /**
-     * Установить баланс пользователя.
-     *
-     * @param balance Новое значение баланса.
-     */
     public void setBalance(double balance) {
         this.balance = balance;
     }

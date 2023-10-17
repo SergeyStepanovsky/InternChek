@@ -2,6 +2,8 @@ package com.walletservice.repository;
 
 import com.walletservice.model.Player;
 
+import java.util.Optional;
+
 /**
  * Интерфейс {@code PlayerRepository} представляет собой репозиторий для операций доступа к данным объектов {@link Player}.
  * Репозиторий предоставляет абстрактные методы для поиска и сохранения игроков.
@@ -16,6 +18,8 @@ public interface PlayerRepository {
      * @return Объект {@link Player} с заданным именем пользователя или {@code null}, если такой игрок не найден.
      */
     Player findByUsername(String username);
+
+    Optional<Player> findById(Integer id);
 
     /**
      * Сохраняет заданный объект {@link Player} в репозиторий.

@@ -41,7 +41,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     /**
-     * Проводит кредитовую транзакцию для указанного игрока.
+     * Проводит кредитную транзакцию для указанного игрока.
      *
      * @param player игрок, на счет которого следует зачислить средства.
      * @param amount сумма зачисления.

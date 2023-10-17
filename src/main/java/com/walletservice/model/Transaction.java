@@ -1,5 +1,6 @@
 package com.walletservice.model;
 
+
 import java.util.UUID;
 
 /**
@@ -33,6 +34,13 @@ public class Transaction {
         this.amount = amount;
         this.type = type;
     }
+
+    public Transaction(UUID transactionId, double amount, TransactionType type) {
+        this.transactionId = transactionId;
+        this.amount = amount;
+        this.type = type;
+    }
+
 
     /**
      * Получить уникальный идентификатор транзакции.
